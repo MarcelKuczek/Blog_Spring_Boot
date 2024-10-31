@@ -18,7 +18,7 @@ public class Comment {
     @Id
     private long id;
     private String content;
+    private long postId;
     private LocalDateTime created;
-
 
 }
