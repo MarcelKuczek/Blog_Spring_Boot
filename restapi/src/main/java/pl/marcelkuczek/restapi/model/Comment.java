@@ -3,22 +3,25 @@ package pl.marcelkuczek.restapi.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import java.time.LocalDateTime;
-
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
 
+/**
+ * Represents a Comment in the REST API.
+ * This class is mapped to a database entity and includes attributes related to a comment,
+ * including its content, associated post ID, and creation timestamp.
+ *
+ * @author Marcel Kuczek
+ */
 @Entity
 @Getter
 @Setter
 public class Comment {
+
     @Id
-    private long id;
+    private Long id;
     private String content;
     private long postId;
     private LocalDateTime created;
-
 }

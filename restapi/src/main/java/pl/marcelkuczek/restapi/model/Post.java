@@ -10,12 +10,20 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Represents a Post in the REST API.
+ * This class is mapped to a database entity and includes attributes related to a post,
+ * including its title, content, creation date, and associated comments.
+ *
+ * @author Marcel Kuczek
+ */
 @Entity
 @Getter
 @Setter
 public class Post {
+
     @Id
-    private long id;
+    private Long id;
     private String title;
     private String content;
     private LocalDateTime created;

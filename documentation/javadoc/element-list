@@ -1,0 +1,6 @@
+pl.marcelkuczek.restapi
+pl.marcelkuczek.restapi.controller
+pl.marcelkuczek.restapi.controller.dto
+pl.marcelkuczek.restapi.model
+pl.marcelkuczek.restapi.repository
+pl.marcelkuczek.restapi.service

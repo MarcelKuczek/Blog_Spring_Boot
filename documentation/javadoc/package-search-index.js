@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"pl.marcelkuczek.restapi"},{"l":"pl.marcelkuczek.restapi.controller"},{"l":"pl.marcelkuczek.restapi.controller.dto"},{"l":"pl.marcelkuczek.restapi.model"},{"l":"pl.marcelkuczek.restapi.repository"},{"l":"pl.marcelkuczek.restapi.service"}];updateSearchResults();
