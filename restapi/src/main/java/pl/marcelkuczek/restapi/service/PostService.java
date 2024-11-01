@@ -1,6 +1,7 @@
 package pl.marcelkuczek.restapi.service;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -68,7 +69,7 @@ public class PostService {
      * Extracts comments associated with a specific post ID.
      *
      * @param comments the list of all comments
-     * @param id the ID of the post whose comments are to be extracted
+     * @param id       the ID of the post whose comments are to be extracted
      * @return a list of Comment objects associated with the given post ID
      */
     private List<Comment> extractComments(List<Comment> comments, long id) {
@@ -77,7 +78,42 @@ public class PostService {
                 .collect(Collectors.toList());
     }
 
-    public Post addPost (Post post){
+    /**
+     * Adds a new post.
+     *
+     * @param post the Post object to be added
+     * @return the added Post object
+     */
+    public Post addPost(Post post) {
         return postRepository.save(post);
+    }
+
+    /**
+     * Edits an existing post.
+     *
+     * @param post the Post object containing updated information
+     * @return the updated Post object
+     * @throws EntityNotFoundException if the post with the given ID does not exist
+     */
+    @Transactional
+    public Post editPost(Post post) {
+        Post postEdited = postRepository.findById(post.getId())
+                .orElseThrow(() -> new EntityNotFoundException("Post not found with ID: " + post.getId()));
+        postEdited.setTitle(post.getTitle());
+        postEdited.setContent(post.getContent());
+        return postEdited;
+    }
+
+    /**
+     * Deletes a post by its ID.
+     *
+     * @param id the ID of the post to be deleted
+     * @throws EntityNotFoundException if the post with the given ID does not exist
+     */
+    public void deletePost(Long id) {
+        if (!postRepository.existsById(id)) {
+            throw new EntityNotFoundException("Post not found with ID: " + id);
+        }
+        postRepository.deleteById(id);
     }
 }

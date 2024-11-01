@@ -1,9 +1,7 @@
 package pl.marcelkuczek.restapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,13 +20,19 @@ import java.util.List;
 @Setter
 public class Post {
 
+    public Post() {}
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonProperty("title")
     private String title;
+    @JsonProperty("content")
     private String content;
+    @JsonProperty("created")
     private LocalDateTime created;
 
-    @OneToMany
-    @JoinColumn(name = "postId")
+    @OneToMany(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "postId", updatable = false, insertable = false)
     private List<Comment> comment;
 }

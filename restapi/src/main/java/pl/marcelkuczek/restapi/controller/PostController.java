@@ -1,6 +1,6 @@
 package pl.marcelkuczek.restapi.controller;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.marcelkuczek.restapi.controller.dto.PostDto;
@@ -57,8 +57,35 @@ public class PostController {
         return postService.getSinglePost(id);
     }
 
+    /**
+     * Adds a new post.
+     *
+     * @param post the Post object to be added
+     * @return the added Post object
+     */
     @PostMapping("/posts")
     public Post addPost(@RequestBody Post post){
         return postService.addPost(post);
+    }
+
+    /**
+     * Edits an existing post.
+     *
+     * @param post the Post object with updated information
+     * @return the updated Post object
+     */
+    @PutMapping("/posts")
+    public Post editPost(@RequestBody Post post){
+        return postService.editPost(post);
+    }
+
+    /**
+     * Deletes a post by its ID.
+     *
+     * @param id the ID of the post to be deleted
+     */
+    @DeleteMapping("/posts/{id}")
+    public void deletePost(@PathVariable long id) {
+        postService.deletePost(id);
     }
 }
