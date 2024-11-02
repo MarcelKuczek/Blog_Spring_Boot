@@ -1,6 +1,6 @@
 # Blog
-This project is a Spring Boot application designed for browsing, adding, deleting, and editing blog posts. It is a continuation of an earlier version built with a JavaFX GUI, which served as a foundation for developing this more robust backend-focused application. The application utilizes SQL databases, which I learned and mastered during my studies.
+This project is a Spring Boot application for viewing, adding, deleting, and editing blog posts. It is a continuation of an earlier version built with JavaFX GUI, which was the foundation for developing this more robust backend-focused application. The application leverages SQL databases that I learned and mastered during my studies.
 
-In developing this application, I prioritize clean and readable code, following best practices and utilizing appropriate design patterns to ensure efficiency and maintainability. Each main feature is thoroughly documented, making the codebase organized and accessible for further development.
+When developing this application, I prioritized clean and readable code, following best practices and using the MVC design pattern to ensure performance and ease of use. Every major feature is thoroughly documented, keeping the code base organized and accessible for further development. The application has also been thoroughly tested.
 
-In the future, there are plans to add OAuth2 login functionality for users publishing posts to enhance security and ease of use.
+In the future, OAuth2 login functionality is planned for users posting to increase security and ease of use.
