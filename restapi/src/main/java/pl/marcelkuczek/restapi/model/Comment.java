@@ -20,11 +20,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Comment {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
+    private long postId;
     private String content;
-    private Long postId;
     private LocalDateTime created;
 }

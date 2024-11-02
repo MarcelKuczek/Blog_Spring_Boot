@@ -1,6 +1,5 @@
 package pl.marcelkuczek.restapi.controller;
 
-import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -62,10 +61,9 @@ class PostControllerTest {
     void shouldEditExistingPost() throws Exception {
         String updatedPostJson = """
             {
-                "id": 1,
+                "id": 2,
                 "title": "Updated Post Title",
-                "content": "Updated content of the post.",
-                "created": "2024-11-02T13:41:44.631Z"
+                "content": "Updated content of the post."
             }
         """;
 

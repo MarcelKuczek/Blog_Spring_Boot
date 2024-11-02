@@ -19,21 +19,14 @@ import java.util.List;
 @Getter
 @Setter
 public class Post {
-
-    public Post() {
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @JsonProperty("title")
     private String title;
-    @JsonProperty("content")
     private String content;
-    @JsonProperty("created")
-    private LocalDateTime created;
-
+    private LocalDateTime created = LocalDateTime.now();
     @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "postId", updatable = false, insertable = false)
     private List<Comment> comment;
+
 }
