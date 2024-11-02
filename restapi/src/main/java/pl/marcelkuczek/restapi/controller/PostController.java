@@ -53,7 +53,7 @@ public class PostController {
      * @return the Post object representing the requested post
      */
     @GetMapping("/posts/{id}")
-    public Post getSinglePost(@PathVariable Long id) {
+    public Post getSinglPost(@PathVariable Long id) {
         return postService.getSinglePost(id);
     }
 
@@ -75,7 +75,7 @@ public class PostController {
      * @return the updated Post object
      */
     @PutMapping("/posts")
-    public Post editPost(@RequestBody Post post){
+    public Post editPost(@RequestBody Post post) {
         return postService.editPost(post);
     }
 

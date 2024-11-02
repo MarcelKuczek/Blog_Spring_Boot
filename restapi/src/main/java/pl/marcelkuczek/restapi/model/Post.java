@@ -20,7 +20,8 @@ import java.util.List;
 @Setter
 public class Post {
 
-    public Post() {}
+    public Post() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

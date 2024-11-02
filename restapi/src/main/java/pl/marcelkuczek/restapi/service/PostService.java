@@ -97,8 +97,7 @@ public class PostService {
      */
     @Transactional
     public Post editPost(Post post) {
-        Post postEdited = postRepository.findById(post.getId())
-                .orElseThrow(() -> new EntityNotFoundException("Post not found with ID: " + post.getId()));
+        Post postEdited = postRepository.findById(post.getId()).orElseThrow();
         postEdited.setTitle(post.getTitle());
         postEdited.setContent(post.getContent());
         return postEdited;

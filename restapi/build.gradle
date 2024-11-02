@@ -30,20 +30,20 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	//implementation 'org.projectlombok:lombok:1.18.28'
-	//annotationProcessor 'org.projectlombok:lombok:1.18.28'
 	runtimeOnly 'com.h2database:h2'
-	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok' // używaj tej linii, aby włączyć Lombok
 
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4'
-
-
 	implementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
 
-	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.junit.jupiter:junit-jupiter'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+test {
+	useJUnitPlatform()
 }
 
 tasks.named('test') {
@@ -54,16 +54,14 @@ task generatePostsAndComments() {
 	doLast {
 		File dataSql = file("src/main/resources/data.sql")
 		dataSql.write("")
-		//posts
 		for (int i = 1; i <= 100; i++) {
-			dataSql.append("insert into post(title, content, created) " +
-					"values ('Test post ${i}', 'Content ${i}', '" + LocalDateTime.now().minusDays(100 - i) + "');\n")
+			dataSql.append("insert into post(id, title, content, created) " +
+					"values (${i}, 'Test post ${i}', 'Content ${i}', '"+ LocalDateTime.now().minusDays(100 - i) +"');\n")
 		}
-		//comments
 		for (int i = 1; i <= 100; i++) {
 			int postId = 1 + i / 10
-			dataSql.append("insert into comment(post_id, content, created) " +
-					"values (${postId}, 'Comment ${i}', '" + LocalDateTime.now().minusDays(100 - i) + "');\n")
+			dataSql.append("insert into comment(id, post_id, content, created) " +
+					"values (${i}, ${postId}, 'Comment ${i}', '"+ LocalDateTime.now().minusDays(100 - i) +"');\n")
 		}
 	}
 }
