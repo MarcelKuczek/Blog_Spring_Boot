@@ -44,6 +44,7 @@ class PostControllerTest {
     void shouldAddNewPost() throws Exception {
         String newPostJson = """
             {
+                "author": "Marcel Kuczek",
                 "title": "New Post Title",
                 "content": "This is the content of the new post."
             }
@@ -54,6 +55,7 @@ class PostControllerTest {
                         .content(newPostJson))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(jsonPath("$.author", is("Marcel Kuczek")))
                 .andExpect(jsonPath("$.title", is("New Post Title")))
                 .andExpect(jsonPath("$.content", is("This is the content of the new post.")));
     }

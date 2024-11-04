@@ -98,6 +98,9 @@ public class PostService {
     @Transactional
     public Post editPost(Post post) {
         Post postEdited = postRepository.findById(post.getId()).orElseThrow();
+        if (post.getAuthor() != null) {
+            postEdited.setAuthor(post.getAuthor());
+        }
         if (post.getTitle() != null) {
             postEdited.setTitle(post.getTitle());
         }

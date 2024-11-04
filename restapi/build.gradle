@@ -56,8 +56,8 @@ task generatePostsAndComments() {
 		dataSql.write("")
 		//posts
 		for (int i = 1; i <= 100; i++) {
-			dataSql.append("insert into post(title, content, created) " +
-					"values ('Test post ${i}', 'Content ${i}', '" + LocalDateTime.now().minusDays(100 - i) + "');\n")
+			dataSql.append("insert into post(author, title, content, created) " +
+					"values ('Marcel Kcuzek ${i}', 'Test post ${i}', 'Content ${i}', '" + LocalDateTime.now().minusDays(100 - i) + "');\n")
 		}
 		//comments
 		for (int i = 1; i <= 100; i++) {

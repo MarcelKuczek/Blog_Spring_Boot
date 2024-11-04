@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @Builder
 public class PostDto {
     private Long id;
+    private String author;
     private String title;
     private String content;
     private LocalDateTime created;
